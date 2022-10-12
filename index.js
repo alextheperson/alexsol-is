@@ -6,4 +6,4 @@ var server = http.createServer(function (req, res) {
         response = [message, version].join('\n');
     res.end(response);
 });
-server.listen(3000);
+server.listen();
