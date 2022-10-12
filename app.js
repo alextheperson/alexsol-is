@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.get('/', (req, res) => {
-    res.sendFile("public/home.html")
+    res.sendFile(__dirname + "/public/home.html")
     // res.send('Hello world');
 });
 
