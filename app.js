@@ -3,10 +3,10 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/public/home.html")
-    // res.send('Hello world');
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + "/public/home.html")
+//     // res.send('Hello world');
+// });
 
 app.get('/:name', (req, res) => {
     const name = req.params.name;
