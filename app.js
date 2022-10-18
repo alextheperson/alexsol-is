@@ -5,11 +5,6 @@ app.use(express.static("public/static"))
 
 const PORT = process.env.PORT || 8000;
 
-con.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
-
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/home.html")
     // res.send('Hello world');
