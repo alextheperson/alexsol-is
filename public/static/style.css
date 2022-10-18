@@ -135,6 +135,7 @@ h1:not(.header) {
     padding: 5px;
     position: relative;
     width: max-content;
+    margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 600px) {
