@@ -1,0 +1,12 @@
+{
+    "cap": {
+        "displayName": "School Diversity Analyzer",
+        "url": "//cap.alexsol.is",
+        "description": "This bot scrapes diversity data for school districts in Massachusetts. It has a cache system, updating if the data is more than 30 days old. I made it for my cvil action prject in 8th grade."
+    },
+    "flies": {
+        "displayName": "Fly Evolution",
+        "url": "//flies.alexsol.is",
+        "description": "This bot scrapes diversity data for school districts in Massachusetts. It has a cache system, updating if the data is more than 30 days old. I made it for my cvil action prject in 8th grade."
+    }
+}

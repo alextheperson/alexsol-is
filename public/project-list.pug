@@ -1,0 +1,18 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width")
+		link(rel="stylesheet", href="style.css")
+		title Alexsol.is - Projects
+	body
+		include header.pug
+		main
+			article
+				h1 Projects
+				p These are many of the projects I've made over the years. You might find some of them fun or helpful, so take a look!
+			each val, key in projects
+				section
+					h2
+						a(href="../projects/" + key)= val.displayName
+					p= val.description
