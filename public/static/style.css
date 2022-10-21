@@ -176,4 +176,10 @@ iframe {
     header {
         display: block;
     }
+
+    article,
+    section,
+    iframe {
+        width: 100%;
+    }
 }
