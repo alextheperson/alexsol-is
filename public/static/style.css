@@ -165,6 +165,26 @@ iframe {
     margin-bottom: 30px;
 }
 
+button {
+    position: relative;
+    background: transparent;
+    outline: 3px solid var(--accent);
+    border: 3px solid transparent;
+}
+
+button:hover {
+    outline: 3px solid var(--accent);
+    border-inline: 3px solid var(--accent);
+}
+
+button:active {
+    border-block: 3px solid var(--accent);
+}
+
+input {
+    accent-color: var(--accent);
+}
+
 @media only screen and (max-width: 768px) {
     nav {
         justify-content: center;
