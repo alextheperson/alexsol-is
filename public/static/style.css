@@ -1,5 +1,8 @@
 :root {
     --accent: #e25d28;
+    /* --accent: #5a28e2; */
+    --background: #eeeeee;
+    --text: #000000;
 }
 
 * {
@@ -13,11 +16,13 @@ main {
 }
 
 body {
-    background-color: #bbbbbb;
+    background-color: var(--background);
     font-family: sans-serif;
     margin: 0;
     background-image: url('images/hex-background.png');
     background-size: 600px;
+    color: var(--text);
+    background-attachment: fixed;
 }
 
 body,
@@ -27,14 +32,14 @@ main {
 }
 
 article {
-    background: #eeeeee;
+    background: var(--background);
     width: 70%;
     margin: 0 auto;
     padding: 10px;
 }
 
 section {
-    background: #eeeeee;
+    background: var(--background);
     width: 65%;
     margin: 0 auto;
     padding: 10px;
@@ -50,13 +55,9 @@ header {
 
 header {
     display: flex;
-    background: #eeeeee;
+    background: var(--background);
     padding: 10px;
     border-bottom: 3px solid var(--accent);
-}
-
-.full-width {
-    width: 100%;
 }
 
 nav {
@@ -67,10 +68,36 @@ nav {
     margin-left: 50px;
 }
 
+.grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.grid-cell {
+    border: 3px solid var(--accent);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    flex-grow: 1;
+}
+
+.grid-cell p {
+    flex-grow: 1;
+}
+
+.grid-cell div {
+    text-align: center;
+}
+
+.grid-cell h2 {
+    margin: 0;
+}
+
 a {
     color: var(--accent);
-    filter: saturate(0.5);
-    padding: 5px;
+    filter: brightness(0.75);
 }
 
 a:link {
@@ -80,8 +107,10 @@ a:link {
 
 a:hover {
     text-decoration: none;
-    border: 3px solid var(--accent);
-    padding: 2px;
+}
+
+a:active {
+    filter: brightness(1.5) saturate(0.5);
 }
 
 header h1 {
@@ -100,7 +129,7 @@ nav a:link {
     position: relative;
     margin-right: auto;
     font-weight: bold;
-    color: black;
+    color: var(--text);
     text-decoration: none;
     border: 0px none transparent;
 }
@@ -159,10 +188,10 @@ h1:not(.header) {
 
 iframe {
     flex-grow: 1;
-    border: 3px solid var(--accent);
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 30px;
+    border-style: none;
+    width: 100%;
+    margin: 0;
+    margin-top: -30px;
 }
 
 button {
@@ -185,6 +214,18 @@ input {
     accent-color: var(--accent);
 }
 
+.accent-color {
+    color: var(--accent);
+}
+
+.icon-left {
+    margin-left: 1em;
+}
+
+.icon-right {
+    margin-right: 1em;
+}
+
 @media only screen and (max-width: 768px) {
     nav {
         justify-content: center;
@@ -201,5 +242,16 @@ input {
     section,
     iframe {
         width: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #333;
+        --text: #dddddd;
+    }
+
+    body {
+        background-image: url('images/hex-background-dark.png');
     }
 }

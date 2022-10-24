@@ -4,6 +4,7 @@ html
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width")
 		link(rel="stylesheet", href="style.css")
+		script(src="https://kit.fontawesome.com/cb271d7bc9.js",crossorigin="anonymous")
 		title Alexsol.is - Projects
 	body
 		include header.pug
@@ -11,8 +12,22 @@ html
 			article
 				h1 Projects
 				p These are many of the projects I've made over the years. You might find some of them fun or helpful, so take a look!
-			each val, key in projects
-				section
-					h2
-						a(href="../projects/" + key)= val.displayName
-					p= val.description
+			article.grid
+				each val, key in projects
+					.grid-cell
+						h2
+							a(href="../projects/" + key)= val.displayName
+						p= val.description
+						div
+							span.fa-stack(title=val.responsive.big ? 'Support for large screens' : 'May not work on a large screen')
+								i.fa-solid.fa-desktop.fa-stack-2x
+								unless val.responsive.big
+									i.fa-solid.fa-slash.fa-stack-2x.accent-color
+							span.fa-stack.icon-left(title=val.responsive.medium ? 'Support for medium screens' : 'May not work on a medium screen')
+								i.fa-solid.fa-tablet.fa-stack-2x
+								unless val.responsive.medium
+									i.fa-solid.fa-slash.fa-stack-2x.accent-color
+							span.fa-stack.icon-left(title=val.responsive.small ? 'Support for small screens' : 'May not work on a small screen')
+								i.fa-solid.fa-mobile.fa-stack-2x
+								unless val.responsive.small
+									i.fa-solid.fa-slash.fa-stack-2x.accent-color
