@@ -12,3 +12,6 @@
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+file_index.json
+file_list.txt
