@@ -1,0 +1,10 @@
+{
+	"godot": "nf-seti-godot",
+	"hardware": "nf-seti-config",
+	"java": "nf-seti-java",
+	"javascript": "nf-dev-javascript_badge",
+	"python": "nf-seti-python",
+	"svelte": "nf-seti-svelte",
+	"typescript": "nf-md-language_typescript",
+	"node.js": "nf-md-nodejs"
+}

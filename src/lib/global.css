@@ -1,0 +1,22 @@
+:root {
+	--backdrop: hsl(213, 8%, 15%);
+	--background: hsl(213, 4%, 20%);
+	--foreground: #eeeeee;
+	--font: Verdana, Geneva, Tahoma, sans-serif;
+	--mono-font: 'monospace';
+
+	--primary: hsl(213, 32%, 41%);
+	--secondary: hsl(274, 32%, 41%);
+	--tertiary: hsl(160, 37%, 54%);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--backdrop);
+	color: var(--foreground);
+	font-family: var(--font);
+	margin: 0px;
+}
