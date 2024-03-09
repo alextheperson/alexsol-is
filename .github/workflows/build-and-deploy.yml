@@ -26,6 +26,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
+    - name: files-ls
+      # You may pin to the exact commit or the version.
+      # uses: sigyl-actions/files-ls@750629debc5b5eb3f651b1d44862cbdd19fb1d70
+      uses: sigyl-actions/files-ls@v0.0.1
     - name: Fast FTP
       # You may pin to the exact commit or the version.
       # uses: anvil-solutions/Fast-FTP-Action@de62eeaf1c409a96c7304f3bba8bf8194d0fa98f
