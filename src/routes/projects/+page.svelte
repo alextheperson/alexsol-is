@@ -11,7 +11,7 @@
 			description={project.description}
 			imagePath="/covers/p/{project.url}"
 			tags={project.tags}
-			url="/projects/{project.url}"
+			url="/project/{project.url}"
 		/>
 	{/each}
 </div>
