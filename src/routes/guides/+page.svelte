@@ -5,7 +5,7 @@
 </script>
 
 <div class="project-list">
-	{#each data.guideData as guide}
+	{#each data.guides as guide}
 		<Preview
 			title={guide.title}
 			description={guide.description}

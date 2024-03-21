@@ -1,12 +1,11 @@
 <script lang="ts">
 	import Card from './Card.svelte';
-	import Nf from '$lib/icon.svelte';
 
 	export let data;
 </script>
 
 <div class="project-grid">
-	{#each data.fileData as project}
+	{#each data.files as project}
 		<Card
 			title={project.title}
 			description={project.description}

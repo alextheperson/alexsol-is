@@ -1,7 +1,5 @@
-import { env } from '$env/dynamic/private';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { fileURLToPath } from 'url';
+import config from '$lib/config';
+import { getProjectMetadata } from '$lib/getProjects';
 
 export type ProjectData = {
 	title: string;
@@ -11,19 +9,15 @@ export type ProjectData = {
 };
 
 export function load() {
-	const projectDirectory = fileURLToPath(new URL('../..' + env.PROJECTS_PATH, import.meta.url));
-
-	const topProjects = env.RECENT_PROJECTS.split(',').map((val) => {
+	const topProjects = config.RECENT_PROJECTS.split(',').map((val) => {
 		return {
-			...(JSON.parse(
-				readFileSync(join(projectDirectory, val, 'project.json'), 'utf-8')
-			) as ProjectData),
+			...getProjectMetadata(val),
 			url: val
 		};
 	});
 
 	return {
 		topProjects,
-		path: env.PROJECTS_PATH
+		path: config.PROJECTS_PATH
 	};
 }

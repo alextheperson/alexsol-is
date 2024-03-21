@@ -1,11 +1,11 @@
-import { env } from '$env/dynamic/private';
+import config from '$lib/config';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 
 export function GET({ params }) {
 	const guideDirectory = fileURLToPath(
-		new URL('../../../../..' + env.GUIDES_PATH, import.meta.url)
+		new URL('../../../../..' + config.GUIDES_PATH, import.meta.url)
 	);
 	const file = readFileSync(join(guideDirectory, params.slug, 'cover.png'));
 

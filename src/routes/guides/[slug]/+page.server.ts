@@ -1,9 +1,6 @@
-import { env } from '$env/dynamic/private';
-import { readFileSync } from 'fs';
 import { marked } from 'marked';
-import { join } from 'path';
-import { fileURLToPath } from 'url';
 import hljs from 'highlight.js/lib/common';
+import { getGuideContent } from '$lib/getGuides.js';
 
 function codeRenderer(code: string, infostring: string | undefined, escaped: boolean) {
 	console.log(code, infostring, escaped);
@@ -13,8 +10,7 @@ function codeRenderer(code: string, infostring: string | undefined, escaped: boo
 marked.use({ renderer: { code: codeRenderer } });
 
 export function load({ params }) {
-	const guideDirectory = fileURLToPath(new URL('../../../..' + env.GUIDES_PATH, import.meta.url));
-	const file = readFileSync(join(guideDirectory, params.slug, 'guide.md'), 'utf-8');
+	const file = getGuideContent(params.slug);
 
 	return {
 		guide: marked.parse(file)
