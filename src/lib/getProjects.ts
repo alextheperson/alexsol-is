@@ -5,7 +5,6 @@ import { join } from 'node:path';
 export type ProjectData = {
 	title: string;
 	description: string;
-	bigImage: string;
 	tags: string[];
 };
 
