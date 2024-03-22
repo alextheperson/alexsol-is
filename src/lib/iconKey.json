@@ -6,5 +6,16 @@
 	"python": "nf-seti-python",
 	"svelte": "nf-seti-svelte",
 	"typescript": "nf-md-language_typescript",
-	"node.js": "nf-md-nodejs"
+	"node.js": "nf-md-nodejs",
+	"html": "nf-dev-html5",
+	"css": "nf-dev-css3",
+	"sass": "nf-dev-sass",
+	"unity": "nf-md-unity",
+	"github": "nf-md-github",
+	"git": "nf-dev-git",
+	"apple": "nf-dev-apple",
+	"microsoft": "nf-md-microsoft",
+	"windows": "nf-md-microsoft_windows",
+	"linux": "nf-dev-linux",
+	"pug": "nf-seti-pug"
 }
