@@ -85,14 +85,23 @@
 		--slant-size: 20px;
 		--wing-width: var(--slant-size);
 
-		padding: calc(var(--slant-size) / 2);
+		/* padding: calc(var(--slant-size) / 2); */
 		padding-inline: calc(var(--slant-size) * 2);
 		min-height: calc(var(--slant-size) * 2);
 	}
 
-	main::before {
+	main::before,
+	main::after {
 		position: absolute;
-		top: 0;
+		top: 10px;
+		bottom: var(--slant-size);
+		content: '';
+		display: block;
+		width: var(--wing-width);
+		background-color: var(--primary);
+	}
+
+	main::before {
 		left: 0;
 		clip-path: polygon(
 			0 var(--slant-size),
@@ -102,16 +111,9 @@
 			100% 0,
 			var(--slant-size) 0
 		);
-		content: '';
-		display: block;
-		height: 100%;
-		width: var(--wing-width);
-		background-color: var(--primary);
 	}
 
 	main::after {
-		position: absolute;
-		top: 0;
 		right: 0;
 		clip-path: polygon(
 			0 0,
@@ -121,11 +123,6 @@
 			100% var(--slant-size),
 			calc(100% - var(--slant-size)) 0
 		);
-		content: '';
-		display: block;
-		height: 100%;
-		width: var(--wing-width);
-		background-color: var(--primary);
 	}
 
 	a {

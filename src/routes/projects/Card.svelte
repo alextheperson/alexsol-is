@@ -1,22 +1,37 @@
 <script lang="ts">
 	import Tags from '$lib/Tags.svelte';
+	import Icon from '$lib/icon.svelte';
+	import IconKey from '$lib/iconKey.json';
 
-	export let title: string;
-	export let description: string;
-	export let imagePath: string;
-	export let tags: string[];
-	export let url: string;
+	const iconKey: { [_index: string]: string } = IconKey;
+
+	export let data: {
+		title: string;
+		description: string;
+		tags: string[];
+		url: string;
+		source?: string;
+		source_name?: string;
+	};
 </script>
 
-<a href={url}>
-	<div class="outer-wrapper" style="background-image:url({imagePath});">
+<a href="/project/{data.url}">
+	<div class="outer-wrapper" style="background-image:url(/covers/p/{data.url});">
 		<div class="infocard">
 			<div class="title-wrapper">
-				<span class="title">{title}</span>
+				<span class="title">{data.title}</span>
 			</div>
 			<div class="details">
-				<p class="description">{description}</p>
-				<Tags {tags} />
+				<p class="description">{data.description}</p>
+				{#if data.source !== undefined && data.source_name !== undefined}
+					<a href={data.source}
+						>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
+							<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
+						{/if}
+						{data.source_name}</a
+					>
+				{/if}
+				<Tags tags={data.tags} />
 			</div>
 		</div>
 	</div>
@@ -25,6 +40,13 @@
 <style>
 	a {
 		color: var(--foreground);
+		text-align: center;
+		margin-bottom: 10px;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
 	}
 
 	.outer-wrapper {

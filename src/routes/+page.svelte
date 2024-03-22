@@ -8,13 +8,7 @@
 <p class="line-2">Here are some highlights from my collection</p>
 <div class="recent-projects">
 	{#each data.topProjects as project}
-		<Card
-			title={project.title}
-			description={project.description}
-			tags={project.tags}
-			imagePath="/covers/p/{project.url}"
-			url="/projects/{project.url}"
-		></Card>
+		<Card data={project}></Card>
 	{/each}
 </div>
 

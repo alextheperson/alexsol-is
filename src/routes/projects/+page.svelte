@@ -6,13 +6,7 @@
 
 <div class="project-grid">
 	{#each data.files as project}
-		<Card
-			title={project.title}
-			description={project.description}
-			imagePath="/covers/p/{project.url}"
-			tags={project.tags}
-			url="/project/{project.url}"
-		/>
+		<Card data={project} />
 	{/each}
 </div>
 

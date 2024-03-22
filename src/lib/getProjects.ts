@@ -5,6 +5,8 @@ import { join } from 'node:path';
 export type ProjectData = {
 	title: string;
 	description: string;
+	source: string;
+	source_name: 'github';
 	tags: string[];
 };
 
