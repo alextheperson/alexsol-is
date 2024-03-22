@@ -4,6 +4,14 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>Guides - Alexsol.is</title>
+	<meta
+		name="description"
+		content="A list of guides that I've made to help people who run into the same problems as me."
+	/>
+</svelte:head>
+
 <div class="project-list">
 	{#each data.guides as guide}
 		<Preview

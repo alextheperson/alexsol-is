@@ -3,6 +3,14 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>Alexsol.is</title>
+	<meta
+		name="description"
+		content="My home page. View a list of the projects that I have worked on most recently."
+	/>
+</svelte:head>
+
 <h1>Hello There!</h1>
 <p class="line-1">I'm Alex Solis, a collector of projects.</p>
 <p class="line-2">Here are some highlights from my collection</p>

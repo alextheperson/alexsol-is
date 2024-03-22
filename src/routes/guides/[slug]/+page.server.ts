@@ -1,6 +1,6 @@
 import { marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
-import { getGuideContent } from '$lib/getGuides.js';
+import { getGuideContent, getGuideMetadata } from '$lib/getGuides.js';
 
 function codeRenderer(code: string, infostring: string | undefined, escaped: boolean) {
 	console.log(code, infostring, escaped);
@@ -13,6 +13,7 @@ export function load({ params }) {
 	const file = getGuideContent(params.slug);
 
 	return {
-		guide: marked.parse(file)
+		guide: marked.parse(file),
+		metadata: getGuideMetadata(params.slug)
 	};
 }

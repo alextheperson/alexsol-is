@@ -13,6 +13,10 @@
 	getFact();
 </script>
 
+<svelte:head>
+	<title>Alexsol.is</title>
+</svelte:head>
+
 <header>
 	<div class="main-segment">
 		<h1>Alexsol.is</h1>
@@ -93,8 +97,8 @@
 	main::before,
 	main::after {
 		position: absolute;
-		top: 10px;
-		bottom: var(--slant-size);
+		top: 0;
+		bottom: 0;
 		content: '';
 		display: block;
 		width: var(--wing-width);

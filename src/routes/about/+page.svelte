@@ -1,3 +1,8 @@
+<svelte:head>
+	<title>About Me - Alexsol.is</title>
+	<meta name="description" content="All about me, Alex Solis, as a person." />
+</svelte:head>
+
 <h1>About Me</h1>
 <p>
 	My name is Alex Solis, and I like to build stuff, both hardware and software. In addition to my
