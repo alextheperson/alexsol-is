@@ -45,4 +45,13 @@
 	.title {
 		font-size: 1.5em;
 	}
+
+	.details {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.description {
+		flex-grow: 1;
+	}
 </style>

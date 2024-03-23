@@ -1,6 +1,10 @@
 <script lang="ts">
 	import Card from './projects/Card.svelte';
 	export let data;
+
+	let cardSize = 290;
+	let projectGridWidth = 100;
+	let cardMargin = 20;
 </script>
 
 <svelte:head>
@@ -14,7 +18,13 @@
 <h1>Hello There!</h1>
 <p class="line-1">I'm Alex Solis, a collector of projects.</p>
 <p class="line-2">Here are some highlights from my collection</p>
-<div class="recent-projects">
+<div
+	class="recent-projects"
+	bind:clientWidth={projectGridWidth}
+	style="grid-template-columns:repeat({Math.round(
+		(projectGridWidth + cardMargin) / (cardSize + cardMargin)
+	)}, 1fr)"
+>
 	{#each data.topProjects as project}
 		<Card data={project}></Card>
 	{/each}
@@ -24,10 +34,6 @@
 	.recent-projects {
 		display: flex;
 		gap: 20px;
-	}
-
-	:global(.recent-projects > a > div) {
-		width: 300px;
 	}
 
 	h1 {
@@ -41,5 +47,10 @@
 
 	.line-2 {
 		font-size: 2em;
+	}
+
+	.recent-projects {
+		display: grid;
+		gap: 20px;
 	}
 </style>

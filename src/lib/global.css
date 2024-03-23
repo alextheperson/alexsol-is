@@ -8,6 +8,8 @@
 	--primary: hsl(213, 32%, 41%);
 	--secondary: hsl(274, 32%, 41%);
 	--tertiary: hsl(160, 37%, 54%);
+
+	color-scheme: dark;
 }
 
 * {

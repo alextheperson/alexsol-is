@@ -23,14 +23,17 @@
 			</div>
 			<div class="details">
 				<p class="description">{data.description}</p>
-				{#if data.source !== undefined && data.source_name !== undefined}
-					<a href={data.source}
-						>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
-							<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
-						{/if}
-						{data.source_name}</a
-					>
-				{/if}
+				<div class="links">
+					<a href="/project/{data.url}"><Icon iconName="nf-fa-external_link" /> Deployment</a>
+					{#if data.source !== undefined && data.source_name !== undefined}
+						<a href={data.source}
+							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
+								<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
+							{/if}
+							{data.source_name}</a
+						>
+					{/if}
+				</div>
 				<Tags tags={data.tags} />
 			</div>
 		</div>
@@ -41,8 +44,13 @@
 	a {
 		color: var(--foreground);
 		text-align: center;
-		margin-bottom: 10px;
 		text-decoration: none;
+	}
+
+	.links {
+		display: flex;
+		justify-content: space-evenly;
+		margin-bottom: 20px;
 	}
 
 	a:hover {
