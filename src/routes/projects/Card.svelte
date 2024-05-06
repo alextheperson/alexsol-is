@@ -15,7 +15,7 @@
 	};
 </script>
 
-<a href="/project/{data.url}">
+<a href="/project/{data.url}/">
 	<div class="outer-wrapper" style="background-image:url(/covers/p/{data.url});">
 		<div class="infocard">
 			<div class="title-wrapper">
@@ -24,7 +24,7 @@
 			<div class="details">
 				<p class="description">{data.description}</p>
 				<div class="links">
-					<a href="/project/{data.url}"><Icon iconName="nf-fa-external_link" /> Deployment</a>
+					<a href="/project/{data.url}/"><Icon iconName="nf-fa-external_link" /> Deployment</a>
 					{#if data.source !== undefined && data.source_name !== undefined}
 						<a href={data.source}
 							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
