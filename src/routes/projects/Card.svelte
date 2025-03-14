@@ -219,4 +219,8 @@
 		display: block;
 		flex-grow: 1;
 	}
+
+	p {
+		margin-block: 0;
+	}
 </style>
