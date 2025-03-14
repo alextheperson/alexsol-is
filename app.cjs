@@ -1,5 +1,5 @@
 async function load() {
-	await import('./index.js');
+  await import('./server/index.js');
 }
 
 load();
