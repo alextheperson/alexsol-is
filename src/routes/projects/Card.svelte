@@ -12,19 +12,36 @@
 		url: string;
 		source?: string;
 		source_name?: string;
+		format: 'web' | 'external' | 'article';
 	};
+
+	export let tagEvent: ((tagName: string) => {}) | null = null;
+	export let formatEvent: ((formatName: string) => {}) | null = null;
 </script>
 
-<a href="/project/{data.url}/">
-	<div class="outer-wrapper" style="background-image:url(/covers/p/{data.url});">
-		<div class="infocard">
-			<div class="title-wrapper">
-				<span class="title">{data.title}</span>
-			</div>
-			<div class="details">
-				<p class="description">{data.description}</p>
-				<div class="links">
-					<a href="/project/{data.url}/"><Icon iconName="nf-fa-external_link" /> Deployment</a>
+<div class="outer-wrapper">
+	<div class="background" style="background-image:url(/covers/p/{data.url});"></div>
+	<div class="infocard">
+		<div class="title-wrapper">
+			<span class="title">{data.title}</span>
+			{#if formatEvent === null}
+				<span class="format">{data.format}</span>
+			{:else}
+				<button
+					class="format"
+					onclick={() => {
+						formatEvent(data.format);
+					}}
+				>
+					{data.format}
+				</button>
+			{/if}
+		</div>
+		<div class="details">
+			<p class="description">{data.description}</p>
+			<div class="links">
+				{#if data.format === 'web'}
+					<a href="/project/{data.url}/"><Icon iconName="nf-fa-eye" /> Visit</a>
 					{#if data.source !== undefined && data.source_name !== undefined}
 						<a href={data.source}
 							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
@@ -33,12 +50,32 @@
 							{data.source_name}</a
 						>
 					{/if}
-				</div>
-				<Tags tags={data.tags} />
+				{:else if data.format === 'external'}
+					<a href={data.url}><Icon iconName="nf-fa-external_link" /> Visit</a>
+					{#if data.source !== undefined && data.source_name !== undefined}
+						<a href={data.source}
+							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
+								<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
+							{/if}
+							{data.source_name}</a
+						>
+					{/if}
+				{:else if data.format === 'article'}
+					<a href="/projects/{data.url}/"><Icon iconName="nf-seti-text" /> Read</a>
+					{#if data.source !== undefined && data.source_name !== undefined}
+						<a href={data.source}
+							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
+								<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
+							{/if}
+							{data.source_name}</a
+						>
+					{/if}
+				{/if}
 			</div>
+			<Tags tags={data.tags} onclick={tagEvent} />
 		</div>
 	</div>
-</a>
+</div>
 
 <style>
 	a {
@@ -53,16 +90,73 @@
 		margin-bottom: 20px;
 	}
 
+	.links a {
+		text-transform: capitalize;
+	}
+
 	a:hover {
 		text-decoration: underline;
 	}
 
 	.outer-wrapper {
-		background-color: var(--background);
 		background-size: cover;
 		position: relative;
 		aspect-ratio: 4 / 5;
 		overflow: hidden;
+	}
+
+	.outer-wrapper::before {
+		content: '';
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		top: -50%;
+		left: -50%;
+		--hatch-color: color-mix(in srgb, var(--background), white 5%);
+		background-image: linear-gradient(
+			to bottom,
+			var(--hatch-color) 3%,
+			var(--background) 4%,
+			var(--background) 46%,
+			var(--hatch-color) 47%,
+			var(--hatch-color) 53%,
+			var(--background) 54%,
+			var(--background) 96%,
+			var(--hatch-color) 97%
+		);
+		background-size: 40px 40px;
+		rotate: -85deg;
+	}
+
+	.outer-wrapper:nth-child(2n)::before {
+		rotate: 24deg;
+	}
+
+	.outer-wrapper:nth-child(-2n + 5)::before {
+		rotate: 72deg;
+	}
+
+	.outer-wrapper:nth-child(3n-1)::before {
+		rotate: 286deg;
+	}
+
+	.outer-wrapper:nth-child(4n-3)::before {
+		rotate: 47deg;
+	}
+
+	.outer-wrapper:nth-child(4n + 1)::before {
+		rotate: -143deg;
+	}
+
+	.outer-wrapper:nth-child(5n) ::before {
+		rotate: 52deg;
+	}
+
+	.background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
 	}
 
 	.infocard {
@@ -78,7 +172,9 @@
 		flex-direction: column;
 	}
 
-	.outer-wrapper:hover .infocard {
+	.outer-wrapper:hover .infocard,
+	.background:hover + .infocard,
+	.infocard:hover {
 		transform: translate(0, 0);
 	}
 
@@ -89,10 +185,26 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
+		gap: 3px;
 	}
 
 	.title {
 		font-size: 1.5em;
+		overflow: hidden;
+		text-wrap: nowrap;
+	}
+
+	.format {
+		font-size: 1em;
+		opacity: 0.5;
+		text-transform: capitalize;
+		background: none;
+		border: none;
+	}
+
+	button.format {
+		cursor: pointer;
 	}
 
 	.details {

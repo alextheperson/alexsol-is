@@ -5,12 +5,9 @@
 
 <h1>About Me</h1>
 <p>
-	My name is Alex Solis, and I like to build stuff, both hardware and software. In addition to my
-	numerous projects, I have done both <a
-		href="https://en.wikipedia.org/wiki/FIRST_Lego_League_Challenge">FLL</a
-	>
-	and <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FTC</a> a combined 8 years with
-	<a href="https://holyokecodes.org">Holyoke Codes</a>. I also enjoy doing theater, both on and off
-	stage. I've performed in quite a few plays with the
-	<a href="https://youngshakespeareplayerseast.org/">Young Shakespeare Players East</a>.
+	My name is Alex Solis, and I like to build stuff. I got hooked on building through LEGO. I
+	eventually joined an First Lego League team, and then a First Tech Challege team a few years
+	later. Currently, I am working on building a combat robot to compete in NHRL. In addition to
+	building robots, I perform Shakespeare with The Young Shakespeare Players East, and do technical
+	theater wherever I can.
 </p>

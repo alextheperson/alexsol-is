@@ -3,7 +3,9 @@
 	import '$lib/global.css';
 	import facts from '$lib/facts.json';
 
-	let shownFact: string;
+	let { children } = $props();
+
+	let shownFact = $state('');
 
 	function getFact() {
 		const randomNumber = Math.floor(Math.random() * (facts.length - 1));
@@ -19,26 +21,33 @@
 
 <header>
 	<div class="main-segment">
-		<h1>Alexsol.is</h1>
+		<a class="vanilla" href="/"><h1>Alexsol.is</h1></a>
 		<a class={$page.url.pathname === '/' ? 'selected' : ''} href="/">Home</a>
 		<a class={$page.url.pathname.endsWith('about') ? 'selected' : ''} href="/about">About</a>
 		<a class={$page.url.pathname.endsWith('projects') ? 'selected' : ''} href="/projects"
 			>Projects</a
 		>
-		<a class={$page.url.pathname.endsWith('guides') ? 'selected' : ''} href="/guides">Guides</a>
+		<!--<a class={$page.url.pathname.endsWith('guides') ? 'selected' : ''} href="/guides">Guides</a>-->
+		<a class={$page.url.pathname.endsWith('theater') ? 'selected' : ''} href="/theater">Theater</a>
 	</div>
 	{#key shownFact}
-		<div class="second-segment" on:mouseenter={getFact} role="banner">
+		<div class="second-segment" onmouseenter={getFact} role="banner">
 			{shownFact}
 		</div>
 	{/key}
 </header>
 
 <main>
-	<slot />
+	<div>
+		{@render children()}
+	</div>
 </main>
 
 <style>
+	/*	:global(html) {
+		background: red;
+	}*/
+
 	header {
 		height: 75px;
 		display: flex;
@@ -72,7 +81,7 @@
 		margin-inline-start: calc(-1 * var(--slant-size));
 		padding: 10px 10px 10px calc(10px + var(--slant-size));
 		display: flex;
-		justify-content: center;
+		justify-content: end;
 		align-items: center;
 		vertical-align: middle;
 		height: min-content;
@@ -92,6 +101,12 @@
 		/* padding: calc(var(--slant-size) / 2); */
 		padding-inline: calc(var(--slant-size) * 2);
 		min-height: calc(var(--slant-size) * 2);
+	}
+
+	main > div {
+		background-color: color-mix(in srgb, var(--backdrop), transparent 30%);
+		/* outline: 10px solid var(--backdrop);*/
+		padding: 10px;
 	}
 
 	main::before,
@@ -145,11 +160,11 @@
 		text-decoration: none;
 	}
 
-	a.selected {
+	a:not(vanilla).selected {
 		outline: 2px solid var(--foreground);
 	}
 
-	a:hover::before {
+	a:not(.vanilla):hover::before {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -162,7 +177,7 @@
 		transform: translate(-2px, -2.2px);
 	}
 
-	a:hover::after {
+	a:not(.vanilla):hover::after {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -175,7 +190,7 @@
 		transform: translate(2px, -2.2px);
 	}
 
-	@media only screen and (max-width: 992px) {
+	@media only screen and (max-width: 1100px) {
 		.main-segment {
 			flex-grow: 1;
 			clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
