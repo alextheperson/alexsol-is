@@ -1,24 +1,65 @@
 :root {
-	--backdrop: hsl(213, 8%, 15%);
-	--background: hsl(213, 4%, 20%);
-	--foreground: #eeeeee;
-	--font: Verdana, Geneva, Tahoma, sans-serif;
-	--mono-font: 'monospace';
+  --backdrop: hsl(213, 8%, 15%);
+  --background: hsl(213, 4%, 20%);
+  --foreground: #eeeeee;
+  --font: Verdana, Geneva, Tahoma, sans-serif;
+  --mono-font: 'monospace';
 
-	--primary: hsl(213, 32%, 41%);
-	--secondary: hsl(274, 32%, 41%);
-	--tertiary: hsl(160, 37%, 54%);
+  --primary: hsl(213, 32%, 41%);
+  --secondary: hsl(274, 32%, 41%);
+  --tertiary: hsl(160, 37%, 54%);
 
-	color-scheme: dark;
+  color-scheme: dark;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	background-color: var(--backdrop);
-	color: var(--foreground);
-	font-family: var(--font);
-	margin: 0px;
+  background-color: var(--backdrop);
+  color: var(--foreground);
+  font-family: var(--font);
+  margin: 0px;
+  height: 100vh;
+}
+
+.hatch {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hatch::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  --hatch-color: color-mix(in srgb, var(--background), white 0.5%);
+  background-image: linear-gradient(to bottom,
+      var(--hatch-color) 0%,
+      var(--backdrop) 0.5%,
+      var(--backdrop) 48%,
+      var(--hatch-color) 49%,
+      var(--hatch-color) 50%,
+      var(--backdrop) 51%,
+      var(--backdrop) 99%,
+      var(--hatch-color) 99.5%);
+  background-size: 50px 50px;
+
+  background-image: radial-gradient(var(--hatch-color) 8%, var(--backdrop) 9%);
+  background-size: 35px 35px;
+  rotate: -55deg;
+}
+
+p {
+  line-height: 1.7em;
+  font-size: 1.1em
 }

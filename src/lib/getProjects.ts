@@ -3,26 +3,45 @@ import config from '$lib/config';
 import { join } from 'node:path';
 
 export type ProjectData = {
-	title: string;
-	description: string;
-	source: string;
-	source_name: 'github';
-	tags: string[];
+  title: string;
+  description: string;
+  source?: string;
+  source_name?: string;
+  format: 'web' | "article"
+  tags: string[];
+} | {
+  title: string;
+  description: string;
+  source?: string;
+  source_name?: string;
+  format: 'external'
+  url: string;
+  tags: string[];
 };
+;
 
 export function getProjectList() {
-	return readdirSync(config.PROJECTS_PATH);
+  return readdirSync(config.PROJECTS_PATH);
 }
 
 export function getProjectResource(projectName: string, resourceName: string) {
-	return readFileSync(join(config.PROJECTS_PATH, projectName, resourceName));
+  return readFileSync(join(config.PROJECTS_PATH, projectName, resourceName));
+}
+
+export function getProjectArticle(projectName: string) {
+  return readFileSync(join(config.PROJECTS_PATH, projectName, 'project.md'), 'utf-8');
 }
 
 export function getProjectMetadata(projectName: string) {
-	return {
-		...(JSON.parse(
-			readFileSync(join(config.PROJECTS_PATH, projectName, 'project.json'), 'utf-8')
-		) as ProjectData),
-		url: projectName
-	};
+  let metadata = JSON.parse(
+    readFileSync(join(config.PROJECTS_PATH, projectName, 'project.json'), 'utf-8')
+  ) as ProjectData;
+  if (metadata.format === "external") {
+    return metadata
+  } else {
+    return {
+      ...metadata,
+      url: projectName
+    };
+  }
 }

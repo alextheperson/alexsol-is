@@ -1,16 +1,61 @@
 <script lang="ts">
 	import Card from './Card.svelte';
+	import Tags from '$lib/Tags.svelte';
 
 	export let data;
 
-	let query = '';
+	let tags: string[] = [];
+	let formats: string[] = [];
+	let query: string[] = [];
 
-	let cardSize = 290;
-	let projectGridWidth = 100;
-	let cardMargin = 20;
+	let inputValue = '';
+
+	function parseQuery() {
+		inputValue = inputValue.trimStart();
+		let tokens = inputValue.split(' ');
+		let tagTokens = [];
+		let formatTokens = [];
+		let queryTokens = [];
+
+		for (let i = 0; i < tokens.length; i++) {
+			let prefix = tokens[i].split(':');
+			switch (prefix[0]) {
+				case 'tag':
+					tagTokens.push(prefix.slice(1).join().toLowerCase());
+					break;
+				case 'format':
+					formatTokens.push(prefix.slice(1).join().toLowerCase());
+					break;
+				default:
+					if (tokens[i].length === 0) {
+						break;
+					}
+					queryTokens.push(tokens[i].toLowerCase());
+			}
+		}
+		tags = tagTokens;
+		formats = formatTokens;
+		query = queryTokens;
+	}
+
+	function checkList(projectProperty: string, tokens: string[]) {
+		if (tokens.length === 0) {
+			return true;
+		}
+		for (let i = 0; i < tokens.length; i++) {
+			if (projectProperty.includes(tokens[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	function matchesQuery(project: (typeof data.files)[0]) {
-		return project.title.toLowerCase().includes(query.toLowerCase());
+		return (
+			checkList(project.title.toLowerCase(), query) &&
+			checkList(project.tags.join().toLowerCase(), tags) &&
+			checkList(project.format, formats)
+		);
 	}
 </script>
 
@@ -22,19 +67,52 @@
 	/>
 </svelte:head>
 
-<input placeholder="Search" bind:value={query} />
+<div>
+	<input
+		placeholder="Search"
+		title="Try &quot;tag:&quot; or &quot;format:&quot; in your search query!"
+		oninput={() => {
+			parseQuery();
+		}}
+		bind:value={inputValue}
+	/>
+	<div class="filter-bar">
+		{#if query.length > 0 || tags.length > 0 || formats.length > 0}
+			<span><b>Filtering</b></span>
+		{/if}
 
-<div
-	class="project-grid"
-	bind:clientWidth={projectGridWidth}
-	style="grid-template-columns:repeat({Math.round(
-		(projectGridWidth + cardMargin) / (cardSize + cardMargin)
-	)}, 1fr)"
->
-	{#key query}
+		{#if query.length > 0}
+			<span> | Title Contains</span>
+			<span><i>"{query.join('", "')}"</i></span>
+		{/if}
+
+		{#if tags.length > 0}
+			<span> | <i>Tags Include</i></span>
+			<Tags {tags}></Tags>
+		{/if}
+
+		{#if formats.length > 0}
+			<span> | Type is</span>
+			<span><i>"{formats.join('", "')}"</i></span>
+		{/if}
+	</div>
+</div>
+
+<div class="project-grid">
+	{#key [query, tags, formats]}
 		{#each data.files as project}
 			{#if matchesQuery(project)}
-				<Card data={project} />
+				<Card
+					data={project}
+					formatEvent={(e: string) => {
+						inputValue += ' format:' + e;
+						parseQuery();
+					}}
+					tagEvent={(e: string) => {
+						inputValue += ' tag:' + e;
+						parseQuery();
+					}}
+				/>
 			{/if}
 		{/each}
 	{/key}
@@ -51,7 +129,6 @@
 		outline-offset: 0;
 		transition: 0.1s;
 		padding: 6px;
-		margin-bottom: 20px;
 	}
 
 	input:focus {
@@ -59,8 +136,18 @@
 		outline-offset: -3px;
 	}
 
+	.filter-bar {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		margin-bottom: 20px;
+		height: 33px;
+		margin-top: 3px;
+	}
+
 	.project-grid {
 		display: grid;
 		gap: 20px;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	}
 </style>
