@@ -99,10 +99,14 @@
 	}
 
 	.outer-wrapper {
-		background-size: cover;
 		position: relative;
 		aspect-ratio: 4 / 5;
 		overflow: hidden;
+		--title-height: 75px;
+	}
+
+	.outer-wrapper * {
+		transition: 0.25s ease-out;
 	}
 
 	.outer-wrapper::before {
@@ -154,20 +158,20 @@
 
 	.background {
 		position: absolute;
+		height: calc(100% - var(--title-height));
 		width: 100%;
-		height: 100%;
-		background-size: cover;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 
 	.infocard {
-		--title-height: 75px;
 		position: absolute;
 		left: 0;
 		right: 0;
 		top: 0;
 		bottom: 0;
 		transform: translate(0, calc(100% - var(--title-height)));
-		transition: 0.3s;
 		display: flex;
 		flex-direction: column;
 	}
@@ -178,8 +182,16 @@
 		transform: translate(0, 0);
 	}
 
+	.outer-wrapper:hover .background,
+	.background:hover {
+		transform: translate(0, var(--title-height));
+	}
+
 	.title-wrapper {
 		background-color: color-mix(in srgb, var(--background) 100%, transparent 5%);
+
+		background-color: color-mix(in srgb, var(--background), white 5%);
+
 		padding: 10px;
 		height: var(--title-height);
 		display: flex;
@@ -213,14 +225,14 @@
 		background-color: color-mix(in srgb, var(--background) 100%, transparent 25%);
 		display: flex;
 		flex-direction: column;
+		gap: 0.75em;
+	}
+
+	.details > * {
+		margin-block: 0;
 	}
 
 	.description {
-		display: block;
 		flex-grow: 1;
-	}
-
-	p {
-		margin-block: 0;
 	}
 </style>
