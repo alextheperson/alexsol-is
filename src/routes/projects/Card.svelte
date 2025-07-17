@@ -36,6 +36,7 @@
 					{data.format}
 				</button>
 			{/if}
+			<div class="diamond"></div>
 		</div>
 		<div class="details">
 			<p class="description">{data.description}</p>
@@ -199,6 +200,7 @@
 		justify-content: center;
 		flex-direction: column;
 		gap: 3px;
+		border-bottom: 3px solid var(--primary);
 	}
 
 	.title {
@@ -217,6 +219,20 @@
 
 	button.format {
 		cursor: pointer;
+	}
+
+	.diamond {
+		width: 1em;
+		height: 1em;
+		background-color: var(--primary);
+		rotate: 45deg;
+		position: absolute;
+		translate: 0 calc(0.5 * var(--title-height));
+		transition: 0.5s;
+	}
+
+	.outer-wrapper:hover .diamond {
+		rotate: 405deg;
 	}
 
 	.details {
