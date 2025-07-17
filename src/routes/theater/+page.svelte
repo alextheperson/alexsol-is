@@ -15,7 +15,25 @@
 <table>
 	<tbody>
 		<tr>
-			<td>Rhinoceros (upcoming)</td>
+			<td>Outbound (Senior Capstone) (Upcoming)</td>
+			<td>2026</td>
+			<td>Stage Manager</td>
+			<td>PVPA Theater</td>
+		</tr>
+		<tr>
+			<td>The Children's Hour (Upcoming)</td>
+			<td>2025</td>
+			<td>Stage Manager</td>
+			<td>PVPA Theater</td>
+		</tr>
+		<tr>
+			<td>Little Women (Senior Capstone) (Upcoming)</td>
+			<td>2025</td>
+			<td>Stage Manager</td>
+			<td>PVPA Theater</td>
+		</tr>
+		<tr>
+			<td>Rhinoceros</td>
 			<td>2025</td>
 			<td>Assistant Director & Set Construction</td>
 			<td>PVPA Theater</td>
