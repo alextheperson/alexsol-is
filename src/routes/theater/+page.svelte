@@ -99,6 +99,12 @@
 <table>
 	<tbody>
 		<tr>
+			<td>SHOW Circus Gala</td>
+			<td>2025</td>
+			<td>Sound & Light Op</td>
+			<td>NoHo Center for the Arts</td>
+		</tr>
+		<tr>
 			<td>SHOW Circus First Night</td>
 			<td>2024</td>
 			<td>Sound Op & Made wearable lights for stilts.</td>
