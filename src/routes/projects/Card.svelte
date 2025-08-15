@@ -15,8 +15,8 @@
 		format: 'web' | 'external' | 'article';
 	};
 
-	export let tagEvent: ((tagName: string) => {}) | null = null;
-	export let formatEvent: ((formatName: string) => {}) | null = null;
+	export let tagEvent: ((tagName: string) => void) | null = null;
+	export let formatEvent: ((formatName: string) => void) | null = null;
 </script>
 
 <div class="outer-wrapper">
