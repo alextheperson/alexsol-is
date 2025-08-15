@@ -6,7 +6,7 @@
 <h1>About Me</h1>
 <p>
 	My name is Alex Solis, and I like to build stuff. I got hooked on building through LEGO. I
-	eventually joined an First Lego League team, and then a First Tech Challege team a few years
+	eventually joined a First Lego League team, and then a First Tech Challenge team a few years
 	later. Currently, I am working on building a combat robot to compete in NHRL. In addition to
 	building robots, I perform Shakespeare with The Young Shakespeare Players East, and do technical
 	theater wherever I can.
