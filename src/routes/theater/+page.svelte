@@ -8,7 +8,7 @@
 	My name is Alex Solis, and I am a highschool student who is interested in technical theater. I
 	have done a lot of tech theater at my school, and a little bit for <a
 		href="https://showcircusstudio.com">Show Circus Studio</a
-	>. I am interested to get more real-word tech theater experience. From school, I've gotten
+	>. I am interested to get more real-world tech theater experience. From school, I've gotten
 	experience with Eos consoles, hanging lights, calling cues, QLab, and basic sound board operation.
 </p>
 <h2>Shows at School</h2>

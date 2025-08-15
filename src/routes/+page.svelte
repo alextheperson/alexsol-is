@@ -13,7 +13,7 @@
 
 <h1>Hello There, I'm <b>Alex Solis</b></h1>
 <p class="line-1">
-	I'm hungry for knowledge and always looking for pojects to add to my collection.
+	I'm hungry for knowledge and always looking for projects to add to my collection.
 </p>
 <p class="line-2">Here are some highlights</p>
 <div class="recent-projects">
@@ -22,7 +22,7 @@
 	{/each}
 </div>
 <p>
-	In addition to my pursuit of new projects, I'm also always on the lookout for now skills or
+	In addition to my pursuit of new projects, I'm also always on the lookout for new skills or
 	knowledge, especially when it comes to technical theater.
 </p>
 
