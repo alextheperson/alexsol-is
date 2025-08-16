@@ -70,7 +70,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-grow: 0;
-		transition: 0.6s;
+		transition: 2s;
 
 		position: relative;
 		z-index: 9;
@@ -90,7 +90,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-grow: 0;
-		transition: 0.6s;
+		transition: 2s;
 
 		position: relative;
 		z-index: 9;
@@ -172,6 +172,13 @@
 		.second-segment,
 		.shadow-segment {
 			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		a:not(.vanilla)::after,
+		a:not(.vanilla)::before {
+			transition: 0s;
 		}
 	}
 </style>

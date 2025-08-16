@@ -251,4 +251,14 @@
 	.description {
 		flex-grow: 1;
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.outer-wrapper * {
+			transition: 0s;
+		}
+
+		.diamond {
+			transition: 0s;
+		}
+	}
 </style>
