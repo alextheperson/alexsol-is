@@ -24,6 +24,58 @@ body {
   height: 100vh;
 }
 
+main:not(:has(article)),
+article {
+  width: 80%;
+  margin-inline: auto;
+
+  position: relative;
+
+  --slant-size: 20px;
+  --wing-width: var(--slant-size);
+
+  /* padding: calc(var(--slant-size) / 2); */
+  padding-inline: calc(var(--slant-size) * 2);
+  min-height: calc(var(--slant-size) * 2);
+
+  background-color: color-mix(in srgb, var(--backdrop), transparent 30%);
+}
+
+main:not(:has(article))::before,
+main:not(:has(article))::after,
+article::before,
+article::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: var(--wing-width);
+  background-color: var(--primary);
+}
+
+main:not(:has(article))::before,
+article::before {
+  left: 0;
+  clip-path: polygon(0 var(--slant-size),
+      0 calc(100% - var(--slant-size)),
+      var(--slant-size) 100%,
+      100% 100%,
+      100% 0,
+      var(--slant-size) 0);
+}
+
+main:not(:has(article))::after,
+article::after {
+  right: 0;
+  clip-path: polygon(0 0,
+      0 100%,
+      calc(100% - var(--slant-size)) 100%,
+      100% calc(100% - var(--slant-size)),
+      100% var(--slant-size),
+      calc(100% - var(--slant-size)) 0);
+}
+
 .hatch {
   width: 100%;
   height: 100%;
@@ -62,4 +114,23 @@ body {
 p {
   line-height: 1.7em;
   font-size: 1.1em
+}
+
+a,
+a:link {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--tertiary);
 }

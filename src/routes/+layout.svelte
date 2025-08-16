@@ -41,9 +41,7 @@
 </header>
 
 <main>
-	<div>
-		{@render children()}
-	</div>
+	{@render children()}
 </main>
 
 <style>
@@ -110,61 +108,6 @@
 		vertical-align: middle;
 		height: 50%;
 		overflow: hidden;
-	}
-
-	main {
-		width: 80%;
-		margin-inline: auto;
-
-		position: relative;
-
-		--slant-size: 20px;
-		--wing-width: var(--slant-size);
-
-		/* padding: calc(var(--slant-size) / 2); */
-		padding-inline: calc(var(--slant-size) * 2);
-		min-height: calc(var(--slant-size) * 2);
-	}
-
-	main > div {
-		background-color: color-mix(in srgb, var(--backdrop), transparent 30%);
-		/* outline: 10px solid var(--backdrop);*/
-		padding: 10px;
-	}
-
-	main::before,
-	main::after {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		content: '';
-		display: block;
-		width: var(--wing-width);
-		background-color: var(--primary);
-	}
-
-	main::before {
-		left: 0;
-		clip-path: polygon(
-			0 var(--slant-size),
-			0 calc(100% - var(--slant-size)),
-			var(--slant-size) 100%,
-			100% 100%,
-			100% 0,
-			var(--slant-size) 0
-		);
-	}
-
-	main::after {
-		right: 0;
-		clip-path: polygon(
-			0 0,
-			0 100%,
-			calc(100% - var(--slant-size)) 100%,
-			100% calc(100% - var(--slant-size)),
-			100% var(--slant-size),
-			calc(100% - var(--slant-size)) 0
-		);
 	}
 
 	a {
