@@ -16,6 +16,7 @@
                 nodejs_20
               ];
               shellHook = ''
+                echo "Node Initialized!"
                 node --version
               '';
             };
