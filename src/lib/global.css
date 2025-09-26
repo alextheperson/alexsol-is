@@ -39,6 +39,8 @@ article {
   min-height: calc(var(--slant-size) * 2);
 
   background-color: color-mix(in srgb, var(--backdrop), transparent 30%);
+
+  margin-block-end: 4em;
 }
 
 main:not(:has(article))::before,
@@ -123,12 +125,12 @@ a:link {
 }
 
 a:visited {
-  color: var(--secondary);
+  color: var(--primary);
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--secondary);
 }
 
 a:active {
