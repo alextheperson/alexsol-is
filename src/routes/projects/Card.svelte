@@ -20,7 +20,10 @@
 </script>
 
 <div class="outer-wrapper">
-	<div class="background" style="background-image:url(/covers/p/{data.url});"></div>
+	<div
+		class="background"
+		style="background-image:url('projects/{data.url}/assets/cover.png');"
+	></div>
 	<div class="infocard">
 		<div class="title-wrapper">
 			<span class="title">{data.title}</span>

@@ -9,6 +9,7 @@ export type ProjectData = {
   source_name?: string;
   format: 'web' | "article"
   tags: string[];
+  hide?: boolean
 } | {
   title: string;
   description: string;
@@ -17,6 +18,7 @@ export type ProjectData = {
   format: 'external'
   url: string;
   tags: string[];
+  hide?: boolean
 };
 ;
 
@@ -25,7 +27,10 @@ export function getProjectList() {
 }
 
 export function getProjectResource(projectName: string, resourceName: string) {
-  return readFileSync(join(config.PROJECTS_PATH, projectName, resourceName));
+  let normalizedProjectName = projectName.replace(".", "").replace("/", "");
+  let normalizedResourceName = resourceName.replace("..", "");
+
+  return readFileSync(join(config.PROJECTS_PATH, normalizedProjectName, normalizedResourceName));
 }
 
 export function getProjectArticle(projectName: string) {

@@ -2,6 +2,8 @@ import { redirect, error } from '@sveltejs/kit';
 import { renderMarkdown } from '$lib/markdown';
 import { getProjectArticle, getProjectMetadata } from '$lib/getProjects';
 
+export const trailingSlash = 'always';
+
 export function load({ params }) {
   let metaData = getProjectMetadata(params.slug)
   if (metaData.format === "article") {

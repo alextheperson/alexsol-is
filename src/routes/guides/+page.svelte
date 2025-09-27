@@ -14,13 +14,15 @@
 
 <div class="project-list">
 	{#each data.guides as guide}
-		<Preview
-			title={guide.title}
-			description={guide.description}
-			imageURL="covers/g/{guide.url}"
-			tags={guide.tags}
-			url="/guides/{guide.url}"
-		/>
+		{#if !(guide.hide ?? false)}
+			<Preview
+				title={guide.title}
+				description={guide.description}
+				imageURL="guides/{guide.url}/assets/cover.png"
+				tags={guide.tags}
+				url="guides/{guide.url}"
+			/>
+		{/if}
 	{/each}
 </div>
 

@@ -7,6 +7,7 @@
 	let tags: string[] = [];
 	let formats: string[] = [];
 	let query: string[] = [];
+	let showAll = false;
 
 	let inputValue = '';
 
@@ -26,6 +27,11 @@
 				case 'format':
 					formatTokens.push(prefix.slice(1).join().toLowerCase());
 					break;
+				case 'show': // Equivalent to `show:all:`
+					if (prefix[1] == 'all' && prefix[2] == '') {
+						showAll = true;
+						break;
+					}
 				default:
 					if (tokens[i].length === 0) {
 						break;
@@ -77,7 +83,7 @@
 		bind:value={inputValue}
 	/>
 	<div class="filter-bar">
-		{#if query.length > 0 || tags.length > 0 || formats.length > 0}
+		{#if query.length > 0 || tags.length > 0 || formats.length > 0 || showAll}
 			<span><b>Filtering</b></span>
 		{/if}
 
@@ -95,6 +101,10 @@
 			<span> | Type is</span>
 			<span><i>"{formats.join('", "')}"</i></span>
 		{/if}
+
+		{#if showAll}
+			<span> | Showing Hidden Projects</span>
+		{/if}
 	</div>
 </div>
 
@@ -102,17 +112,19 @@
 	{#key [query, tags, formats]}
 		{#each data.files as project}
 			{#if matchesQuery(project)}
-				<Card
-					data={project}
-					formatEvent={(e: string) => {
-						inputValue += ' format:' + e;
-						parseQuery();
-					}}
-					tagEvent={(e: string) => {
-						inputValue += ' tag:' + e;
-						parseQuery();
-					}}
-				/>
+				{#if !(project.hide ?? false) || showAll}
+					<Card
+						data={project}
+						formatEvent={(e: string) => {
+							inputValue += ' format:' + e;
+							parseQuery();
+						}}
+						tagEvent={(e: string) => {
+							inputValue += ' tag:' + e;
+							parseQuery();
+						}}
+					/>
+				{/if}
 			{/if}
 		{/each}
 	{/key}

@@ -3,28 +3,32 @@ import config from '$lib/config';
 import { join } from 'node:path';
 
 export type GuideData = {
-	title: string;
-	description: string;
-	tags: string[];
+  title: string;
+  description: string;
+  tags: string[];
+  hide?: boolean
 };
 
 export function getGuideList() {
-	return readdirSync(config.GUIDES_PATH);
+  return readdirSync(config.GUIDES_PATH);
 }
 
 export function getGuideResource(projectName: string, resourceName: string) {
-	return readFileSync(join(config.GUIDES_PATH, projectName, resourceName));
+  let normalizedProjectName = projectName.replace(".", "").replace("/", "");
+  let normalizedResourceName = resourceName.replace("..", "");
+
+  return readFileSync(join(config.GUIDES_PATH, normalizedProjectName, normalizedResourceName));
 }
 
 export function getGuideContent(projectName: string) {
-	return readFileSync(join(config.GUIDES_PATH, projectName, 'guide.md'), 'utf-8');
+  return readFileSync(join(config.GUIDES_PATH, projectName, 'guide.md'), 'utf-8');
 }
 
 export function getGuideMetadata(projectName: string) {
-	return {
-		...(JSON.parse(
-			readFileSync(join(config.GUIDES_PATH, projectName, 'guide.json'), 'utf-8')
-		) as GuideData),
-		url: projectName
-	};
+  return {
+    ...(JSON.parse(
+      readFileSync(join(config.GUIDES_PATH, projectName, 'guide.json'), 'utf-8')
+    ) as GuideData),
+    url: projectName
+  };
 }
