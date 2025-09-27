@@ -21,7 +21,7 @@ export type ProjectData = {
 ;
 
 export function getProjectList() {
-  return readdirSync(config.PROJECTS_PATH);
+  return readdirSync(config.PROJECTS_PATH).filter((val) => !val.startsWith("."));
 }
 
 export function getProjectResource(projectName: string, resourceName: string) {
