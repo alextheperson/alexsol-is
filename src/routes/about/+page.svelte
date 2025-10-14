@@ -40,8 +40,12 @@
 				</td>
 			</tr>
 			<tr>
+				<th>Display Manager</th>
+				<td><a href="https://codeberg.org/fairyglade/ly">Ly</a></td>
+			</tr>
+			<tr>
 				<th>Window Manager</th>
-				<td><a href="https://hypr.land/">Hyprland</a></td>
+				<td><a href="https://github.com/YaLTeR/niri">Niri</a></td>
 			</tr>
 			<tr>
 				<th>Browser</th>
