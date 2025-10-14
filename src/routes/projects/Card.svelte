@@ -86,6 +86,7 @@
 		color: var(--foreground);
 		text-align: center;
 		text-decoration: none;
+		filter: none;
 	}
 
 	.links {
@@ -99,7 +100,9 @@
 	}
 
 	a:hover {
-		text-decoration: underline;
+		/* text-decoration: underline overline 1px; */
+		background: var(--primary);
+		outline: 5px solid var(--primary);
 	}
 
 	.outer-wrapper {

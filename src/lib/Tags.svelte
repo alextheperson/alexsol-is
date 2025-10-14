@@ -45,10 +45,16 @@
 	.tag {
 		border: 2px solid var(--primary);
 		border-radius: 25em;
-		padding: 0.4em 0.4em 0.6em;
+		padding: 0.4em 0.8em;
 		font-size: 0.75em;
 		background: color-mix(in srgb, var(--background) 100%, transparent 70%);
 		text-transform: capitalize;
+		transition: 0.3s;
+	}
+
+	.tag:hover {
+		/* text-decoration: underline 1px solid; */
+		background-color: #fff2;
 	}
 
 	button.tag {
