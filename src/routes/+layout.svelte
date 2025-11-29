@@ -21,9 +21,6 @@
 
 <header>
 	<div class="main-segment">
-		<a class="vanilla" href="/">
-			<img src="/favicon.svg" alt="A stylized letter 'A', the logo of this website." />
-		</a>
 		<a class="vanilla" href="/"><h1>Alexsol.is</h1></a>
 		<a class={page.url.pathname === '/' ? 'selected' : ''} href="/">Home</a>
 		<a class={page.url.pathname.endsWith('about') ? 'selected' : ''} href="/about">About</a>
