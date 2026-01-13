@@ -27,6 +27,38 @@
 </article>
 
 <article>
+	<h1>Software I Use Frequently</h1>
+	<table>
+		<tbody>
+			<tr>
+				<th>Editor</th>
+				<td><a href="https://neovim.io/">Neovim</a></td>
+			</tr>
+			<tr>
+				<th>Browser</th>
+				<td
+					><a href="https://floorp.app/en-US">Floorp</a>, with
+					<a href="https://github.com/mbnuqw/sidebery">Sideberry</a> and custom CSS</td
+				>
+			</tr>
+			<tr>
+				<th>Music</th>
+				<td>
+					<a href="https://git.fawkes.io/mtnash/dmm">DMM</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Organization</th>
+				<td>
+					<a href="https://github.com/alextheperson/todo-rs">todo-rs</a> and
+					<a href="https://joplinapp.org/">Joplin</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</article>
+
+<article>
 	<h1>About My Desktop</h1>
 	<table>
 		<tbody>
@@ -66,38 +98,6 @@
 		src="/system-screenshot.png"
 		alt="A screenshot of my desktop, showing a terminal window with Neofetch, a terminal window with Btop, a terminal window with Neovim, and a Floorp window."
 	/>
-</article>
-
-<article>
-	<h1>Software I Use Frequently</h1>
-	<table>
-		<tbody>
-			<tr>
-				<th>Editor</th>
-				<td><a href="https://neovim.io/">Neovim</a></td>
-			</tr>
-			<tr>
-				<th>Browser</th>
-				<td
-					><a href="https://floorp.app/en-US">Floorp</a>, with
-					<a href="https://github.com/mbnuqw/sidebery">Sideberry</a> and custom CSS</td
-				>
-			</tr>
-			<tr>
-				<th>Music</th>
-				<td>
-					<a href="https://git.fawkes.io/mtnash/dmm">DMM</a>
-				</td>
-			</tr>
-			<tr>
-				<th>Organization</th>
-				<td>
-					<a href="https://github.com/alextheperson/todo-rs">todo-rs</a> and
-					<a href="https://joplinapp.org/">Joplin</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
 </article>
 
 <style>
