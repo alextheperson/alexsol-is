@@ -26,7 +26,17 @@
 	></div>
 	<div class="infocard">
 		<div class="title-wrapper">
-			<span class="title">{data.title}</span>
+			<span class="title">
+				{#if data.format === 'web'}
+					<a href="/project/{data.url}/">
+						{data.title}
+					</a>
+				{:else}
+					<a href="data.url}">
+						{data.title}
+					</a>
+				{/if}
+			</span>
 			{#if formatEvent === null}
 				<span class="format">{data.format}</span>
 			{:else}
