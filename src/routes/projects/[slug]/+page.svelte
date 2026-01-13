@@ -11,6 +11,9 @@
 {@html data.article}
 
 <style>
+	:global(h1) {
+		font-size: 3em;
+	}
 	:global(img) {
 		max-width: 100%;
 		box-sizing: border-box;

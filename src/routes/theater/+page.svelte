@@ -21,13 +21,13 @@
 			<td>PVPA Theater</td>
 		</tr>
 		<tr>
-			<td>The Children's Hour (Upcoming)</td>
-			<td>2025</td>
+			<td>Little Women (Senior Capstone) (Upcoming)</td>
+			<td>2026</td>
 			<td>Stage Manager</td>
 			<td>PVPA Theater</td>
 		</tr>
 		<tr>
-			<td>Little Women (Senior Capstone) (Upcoming)</td>
+			<td>The Children's Hour</td>
 			<td>2025</td>
 			<td>Stage Manager</td>
 			<td>PVPA Theater</td>
