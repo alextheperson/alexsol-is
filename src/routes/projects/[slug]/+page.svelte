@@ -12,7 +12,51 @@
 
 <style>
 	:global(img) {
-		max-width: calc(100% - 4em);
-		margin: 2em;
+		max-width: 100%;
+		box-sizing: border-box;
+		max-height: 20vh;
+		margin-inline: auto;
+	}
+	:global(main > img, p, row, grid) {
+		margin-block: 2em;
+		display: block;
+	}
+
+	/* LAYOUT OPTIONS */
+	/* These are dynamic based on the number of children. */
+	:global(row, grid) {
+		display: grid;
+		gap: 2em;
+	}
+	:global(row:has(:nth-child(2))) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	:global(row:has(:nth-child(3))) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	:global(row:has(:nth-child(4))) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	:global(grid:has(:nth-child(4))) {
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+	}
+	:global(grid:has(:nth-child(9))) {
+		grid-template-rows: repeat(3, 1fr);
+		grid-template-columns: repeat(3, 1fr);
+	}
+	:global(grid:has(:nth-child(16))) {
+		grid-template-rows: repeat(4, 1fr);
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	:global(grid:has(:nth-child(6))) {
+		grid-template-rows: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+	}
+	:global(grid:has(:nth-child(12))) {
+		grid-template-rows: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 	}
 </style>
