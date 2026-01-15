@@ -31,8 +31,12 @@
 					<a href="/project/{data.url}/">
 						{data.title}
 					</a>
+				{:else if data.format == 'external'}
+					<a href={data.url}>
+						{data.title}
+					</a>
 				{:else}
-					<a href="data.url}">
+					<a href="/projects/{data.url}">
 						{data.title}
 					</a>
 				{/if}
