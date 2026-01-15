@@ -22,6 +22,9 @@ body {
   font-family: var(--font);
   margin: 0px;
   height: 100vh;
+
+  position: relative;
+  z-index: -2;
 }
 
 main:not(:has(article)),
@@ -78,6 +81,23 @@ article::after {
       calc(100% - var(--slant-size)) 0);
 }
 
+@media (max-width: 768px) {
+
+  main:not(:has(article))::before,
+  main:not(:has(article))::after,
+  article::before,
+  article::after {
+    content: unset;
+  }
+
+  main:not(:has(article)),
+  article {
+    /* margin: 0; */
+    width: 100%;
+    font-size: 0.9em;
+  }
+}
+
 .hatch {
   width: 100%;
   height: 100%;
@@ -85,7 +105,7 @@ article::after {
   overflow: hidden;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
 }
 
 .hatch::before {
