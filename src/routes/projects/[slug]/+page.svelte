@@ -20,7 +20,7 @@
 		max-height: 20vh;
 		margin-inline: auto;
 	}
-	:global(main > img, p, row, grid) {
+	:global(img, p, row, grid) {
 		margin-block: 2em;
 		display: block;
 	}
@@ -61,5 +61,13 @@
 	:global(grid:has(:nth-child(12))) {
 		grid-template-rows: repeat(4, 1fr);
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	:global(figure) {
+		margin: 0;
+	}
+
+	:global(figure > img) {
+		margin-bottom: 0.25em;
 	}
 </style>
