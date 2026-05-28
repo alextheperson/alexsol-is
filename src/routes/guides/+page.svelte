@@ -18,7 +18,7 @@
 			<Preview
 				title={guide.title}
 				description={guide.description}
-				imageURL="guides/{guide.url}/assets/cover.png"
+				imageURL="guides/{guide.url}/assets/cover.webp"
 				tags={guide.tags}
 				url="guides/{guide.url}"
 			/>

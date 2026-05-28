@@ -22,7 +22,7 @@
 <div class="outer-wrapper">
 	<div
 		class="background"
-		style="background-image:url('projects/{data.url}/assets/cover.png');"
+		style="background-image:url('projects/{data.url}/assets/cover.webp');"
 	></div>
 	<div class="infocard">
 		<div class="title-wrapper">
