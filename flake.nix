@@ -14,9 +14,6 @@
             {
               packages = with pkgs; [
                 nodejs_20
-		typescript-language-server
-		svelte-language-server
-		vscode-css-languageserver
               ];
               shellHook = ''
                 echo "Node Initialized!"
