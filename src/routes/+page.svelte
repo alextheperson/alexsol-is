@@ -17,7 +17,7 @@
 </p>
 <p class="line-2">Here are some highlights</p>
 <div class="recent-projects">
-	{#each data.topProjects as project}
+    {#each data.topProjects as project}
 		<Card data={project}></Card>
 	{/each}
 </div>

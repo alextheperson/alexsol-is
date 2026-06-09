@@ -1,6 +1,6 @@
 <svelte:head>
 	<title>About Me - Alexsol.is</title>
-	<meta name="description" content="All about me, Alex Solis" />
+	<meta name="description" content="All about me, Alex Solis">
 </svelte:head>
 
 <article>
@@ -36,15 +36,16 @@
 			</tr>
 			<tr>
 				<th>Browser</th>
-				<td
-					><a href="https://floorp.app/en-US">Floorp</a>, with
-					<a href="https://github.com/mbnuqw/sidebery">Sideberry</a> and custom CSS</td
-				>
+				<td>
+				    <a href="https://floorp.app/en-US">Floorp</a>, with
+					<a href="https://github.com/mbnuqw/sidebery">Sideberry</a> and custom CSS
+                </td>
 			</tr>
 			<tr>
 				<th>Music</th>
 				<td>
-					<a href="https://git.fawkes.io/mtnash/dmm">DMM</a>
+					<a href="https://git.fawkes.io/mtnash/dmm">DMM</a> and
+                    <a href="https://www.deezer.com/us/">Deezer</a>
 				</td>
 			</tr>
 			<tr>
@@ -81,9 +82,13 @@
 				<td><a href="https://github.com/Alexays/Waybar">Waybar</a></td>
 			</tr>
 			<tr>
+				<th>Launcher</th>
+				<td><a href="https://github.com/abenz1267/walker">Walker</a></td>
+			</tr>
+			<tr>
 				<th>Wallpaper</th>
 				<td>
-					<a href="https://codeberg.org/dnkl/wbg">wbg</a>, displaying a wallpaper of my own design (<a
+					<a href="https://github.com/swaywm/swaybg">swaybg</a>, displaying a wallpaper of my own design (<a
 						href="/wallpaper.png">view</a
 					>,
 					<a href="/wallpaper.png" download>download</a>) that I made with
@@ -92,12 +97,29 @@
 			</tr>
 		</tbody>
 	</table>
-	<br />
-	<br />
-	<img
-		src="/system-screenshot.png"
-		alt="A screenshot of my desktop, showing a terminal window with Neofetch, a terminal window with Btop, a terminal window with Neovim, and a Floorp window."
-	/>
+    <br>
+    <span>
+        You can view my .dotfiles
+        <a href="https://github.com/alextheperson/.dotfiles/">here</a>
+    </span>
+	<br>
+	<br>
+    <div class="image-column">
+        <img
+            src="/system-screenshot.png"
+            alt="A screenshot of my desktop, showing a terminal window with FastFetch, a terminal window with BTop, a terminal window with Neovim, and a Floorp window."
+        >
+        <div class="image-row">
+            <img
+                src="/todo-wallpaper.png"
+                alt="A screenshot of my desktop, showing my todo-list and wallpaper."
+            >
+            <img
+                src="/launcher.png"
+                alt="A screenshot of my application launcher, Walker."
+            >
+        </div>
+    </div>
 </article>
 
 <style>
@@ -107,6 +129,23 @@
 	}
 
 	img {
-		max-width: 100%;
+        display: block;
 	}
+
+    .image-column {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .image-row {
+        display: flex;
+        width: 100%;
+        gap: 0.5rem
+    }
+
+    .image-row img {
+        width: 0;
+        flex-grow: 1;
+    }
 </style>
