@@ -2,18 +2,16 @@
 	export let tags: string[];
 	export let onclick: ((tagName: string) => void) | null = null;
 
-	import IconKey from '$lib/iconKey.json';
+	import IconKey from '$lib/iconKey';
 	import Icon from './icon.svelte';
-
-	const iconKey: { [_index: string]: string } = IconKey;
 </script>
 
 <div class="tags">
 	{#if onclick === null}
 		{#each tags as tag}
 			<span class="tag">
-				{#if iconKey[tag.toLowerCase()] !== undefined}
-					<Icon iconName={iconKey[tag.toLowerCase()]} />
+				{#if IconKey[tag.toLowerCase()] !== undefined}
+					<Icon iconName={IconKey[tag.toLowerCase()]} />
 				{/if}
 				{tag}</span
 			>
@@ -26,8 +24,8 @@
 					onclick(tag);
 				}}
 			>
-				{#if iconKey[tag.toLowerCase()] !== undefined}
-					<Icon iconName={iconKey[tag.toLowerCase()]} />
+				{#if IconKey[tag.toLowerCase()] !== undefined}
+					<Icon iconName={IconKey[tag.toLowerCase()]} />
 				{/if}
 				{tag}</button
 			>

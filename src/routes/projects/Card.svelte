@@ -1,94 +1,38 @@
 <script lang="ts">
 	import Tags from '$lib/Tags.svelte';
+    import type { ProjectData } from '$lib/getProjects';
 	import Icon from '$lib/icon.svelte';
-	import IconKey from '$lib/iconKey.json';
+	import IconKey from '$lib/iconKey';
 
-	const iconKey: { [_index: string]: string } = IconKey;
-
-	export let data: {
-		title: string;
-		description: string;
-		tags: string[];
-		url: string;
-		source?: string;
-		source_name?: string;
-		format: 'web' | 'external' | 'article';
-	};
+	export let data: ProjectData;
 
 	export let tagEvent: ((tagName: string) => void) | null = null;
-	export let formatEvent: ((formatName: string) => void) | null = null;
 </script>
 
 <div class="outer-wrapper">
 	<div
 		class="background"
-		style="background-image:url('projects/{data.url}/assets/cover.webp');"
+		style={data.cover === undefined ? "" : `background-image:url('projects/${data.id}/${data.cover}')`}
 	></div>
+
 	<div class="infocard">
 		<div class="title-wrapper">
-			<span class="title">
-				{#if data.format === 'web'}
-					<a href="/project/{data.url}/">
-						{data.title}
-					</a>
-				{:else if data.format == 'external'}
-					<a href={data.url}>
-						{data.title}
-					</a>
-				{:else}
-					<a href="/projects/{data.url}">
-						{data.title}
-					</a>
-				{/if}
-			</span>
-			{#if formatEvent === null}
-				<span class="format">{data.format}</span>
-			{:else}
-				<button
-					class="format"
-					onclick={() => {
-						formatEvent(data.format);
-					}}
-				>
-					{data.format}
-				</button>
-			{/if}
+			<span class="title">{data.title}</span>
 			<div class="diamond"></div>
 		</div>
 		<div class="details">
 			<p class="description">{data.description}</p>
 			<div class="links">
-				{#if data.format === 'web'}
-					<a href="/project/{data.url}/"><Icon iconName="nf-fa-eye" /> Visit</a>
-					{#if data.source !== undefined && data.source_name !== undefined}
-						<a href={data.source}
-							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
-								<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
-							{/if}
-							{data.source_name}</a
-						>
-					{/if}
-				{:else if data.format === 'external'}
-					<a href={data.url}><Icon iconName="nf-fa-external_link" /> Visit</a>
-					{#if data.source !== undefined && data.source_name !== undefined}
-						<a href={data.source}
-							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
-								<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
-							{/if}
-							{data.source_name}</a
-						>
-					{/if}
-				{:else if data.format === 'article'}
-					<a href="/projects/{data.url}/"><Icon iconName="nf-seti-text" /> Read</a>
-					{#if data.source !== undefined && data.source_name !== undefined}
-						<a href={data.source}
-							>{#if iconKey[data.source_name.toLowerCase()] !== undefined}
-								<Icon iconName={iconKey[data.source_name.toLowerCase()]} />
-							{/if}
-							{data.source_name}</a
-						>
-					{/if}
-				{/if}
+                {#each data.modules as module}
+                    {#if module.type === 'deployment'}
+                        <a href="{module.url}"><Icon iconName="nf-fa-eye" /> Visit</a>
+                    {:else if module.type === 'source'}
+                        {@const icon = IconKey[module.name.toLowerCase()] ?? IconKey["git"]}
+                        <a href={module.url}><Icon iconName={icon} /> Source</a>
+                    {:else if module.type === 'article'}
+                        <a href="/projects/{data.id}/"><Icon iconName="nf-seti-text" /> Read</a>
+                    {/if}
+                {/each}
 			</div>
 			<Tags tags={data.tags} onclick={tagEvent} />
 		</div>
@@ -225,20 +169,7 @@
 
 	.title {
 		font-size: 1.5em;
-		overflow: hidden;
 		text-wrap: nowrap;
-	}
-
-	.format {
-		font-size: 1em;
-		opacity: 0.5;
-		text-transform: capitalize;
-		background: none;
-		border: none;
-	}
-
-	button.format {
-		cursor: pointer;
 	}
 
 	.diamond {

@@ -24,7 +24,7 @@
 				case 'tag':
 					tagTokens.push(prefix.slice(1).join().toLowerCase());
 					break;
-				case 'format':
+				case 'module':
 					formatTokens.push(prefix.slice(1).join().toLowerCase());
 					break;
 				case 'show': // Equivalent to `show:all:`
@@ -43,24 +43,28 @@
 		formats = formatTokens;
 		query = queryTokens;
 	}
-
-	function checkList(projectProperty: string, tokens: string[]) {
-		if (tokens.length === 0) {
+    function checkList(projectProperty: string[], tokens: string[]) {
+		if (tokens.length === 0 || projectProperty.length === 0) {
 			return true;
 		}
-		for (let i = 0; i < tokens.length; i++) {
-			if (projectProperty.includes(tokens[i])) {
-				return true;
-			}
+
+		for (let i = 0; i < projectProperty.length; i++) {
+            for (let j = 0; j < tokens.length; j++) {
+                if (projectProperty[i].includes(tokens[j])) {
+                    return true;
+                }
+            }
 		}
+
 		return false;
-	}
+    }
 
 	function matchesQuery(project: (typeof data.files)[0]) {
 		return (
-			checkList(project.title.toLowerCase(), query) &&
-			checkList(project.tags.join().toLowerCase(), tags) &&
-			checkList(project.format, formats)
+			checkList([project.title.toLowerCase()], query) &&
+			checkList([project.tags.join().toLowerCase()], tags) &&
+			checkList(project.modules.map((v) => v.type), formats) &&
+            !(project.hide ?? false) || showAll
 		);
 	}
 </script>
@@ -76,7 +80,7 @@
 <div>
 	<input
 		placeholder="Search"
-		title="Try &quot;tag:&quot; or &quot;format:&quot; in your search query!"
+		title="Try &quot;tag:&quot; or &quot;module:&quot; in your search query!"
 		oninput={() => {
 			parseQuery();
 		}}
@@ -112,19 +116,13 @@
 	{#key [query, tags, formats]}
 		{#each data.files as project}
 			{#if matchesQuery(project)}
-				{#if !(project.hide ?? false) || showAll}
-					<Card
-						data={project}
-						formatEvent={(e: string) => {
-							inputValue += ' format:' + e;
-							parseQuery();
-						}}
-						tagEvent={(e: string) => {
-							inputValue += ' tag:' + e;
-							parseQuery();
-						}}
-					/>
-				{/if}
+                <Card
+                    data={project}
+                    tagEvent={(e: string) => {
+                        inputValue += ' tag:' + e;
+                        parseQuery();
+                    }}
+                />
 			{/if}
 		{/each}
 	{/key}

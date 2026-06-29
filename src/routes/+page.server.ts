@@ -12,7 +12,6 @@ export function load() {
 	const topProjects = config.RECENT_PROJECTS.split(',').map((val) => {
 		return {
 			...getProjectMetadata(val),
-			url: val
 		};
 	});
 

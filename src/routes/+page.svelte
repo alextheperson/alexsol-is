@@ -17,7 +17,7 @@
 </p>
 <p class="line-2">Here are some highlights</p>
 <div class="recent-projects">
-    {#each data.topProjects as project}
+   {#each data.topProjects as project}
 		<Card data={project}></Card>
 	{/each}
 </div>
@@ -31,7 +31,7 @@
 		display: flex;
 		gap: 20px;
 		grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
-		font-size: 0.75em;
+		font-size: 0.8em;
 	}
 
 	h1 {

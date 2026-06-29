@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.metadata.title} - Guides - Alexsol.is</title>
+	<title>{data.metadata.title} - Projects - Alexsol.is</title>
 	<meta name="description" content={data.metadata.description} />
 </svelte:head>
 
@@ -17,7 +17,7 @@
 	:global(img) {
 		max-width: 100%;
 		box-sizing: border-box;
-		max-height: 20vh;
+		max-height: 30vh;
 		margin-inline: auto;
 	}
 	:global(img, p, row, grid) {
