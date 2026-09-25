@@ -14,6 +14,7 @@
             {
               packages = with pkgs; [
                 nodejs_20
+								podman
               ];
               shellHook = ''
                 echo "Node Initialized!"
